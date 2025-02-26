@@ -1,0 +1,71 @@
+{
+  "name": "@yopem/try-catch",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [
+    "try-catch",
+    "utils"
+  ],
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/base.js",
+  "types": "dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Karyana Yandi <karyana@yandi.me>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yopem/utils",
+    "directory": "packages/utils/try-catch"
+  },
+  "bugs": {
+    "url": "https://github.com/yopem/utils/issues"
+  },
+  "scripts": {
+    "build": "tsup src --dts",
+    "build:fast": "tsup src",
+    "dev": "pnpm build:fast -- --watch",
+    "format:fix": "prettier --write \"**/*.{ts,tsx,mjs,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,mjs,md}\"",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@yopem/eslint-config": "catalog:tooling",
+    "@yopem/prettier-config": "catalog:tooling",
+    "@yopem/typescript-config": "catalog:tooling",
+    "eslint": "catalog:tooling",
+    "prettier": "catalog:tooling",
+    "tsup": "catalog:tooling",
+    "typescript": "catalog:tooling"
+  },
+  "tsup": {
+    "clean": true,
+    "target": "es2022",
+    "format": [
+      "cjs",
+      "esm"
+    ]
+  }
+}
