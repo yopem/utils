@@ -1,22 +1,31 @@
 interface Success<T> {
   data: T
-  error: null
+  error?: never
 }
 
 interface Failure<E> {
-  data: null
+  data?: never
   error: E
 }
 
 type Result<T, E = Error> = Success<T> | Failure<E>
 
-export async function tryCatch<T, E = Error>(
-  promise: Promise<T>,
-): Promise<Result<T, E>> {
-  try {
-    const data = await promise
-    return { data, error: null }
-  } catch (error) {
-    return { data: null, error: error as E }
+type MaybePromise<T> = T | Promise<T>
+
+export function tryCatch<T, E = Error>(
+  arg: Promise<T> | (() => MaybePromise<T>),
+): Result<T, E> | Promise<Result<T, E>> {
+  if (typeof arg === "function") {
+    try {
+      const result = arg()
+
+      return result instanceof Promise ? tryCatch(result) : { data: result }
+    } catch (error) {
+      return { error: error as E }
+    }
   }
+
+  return arg
+    .then((data) => ({ data }))
+    .catch((error) => ({ error: error as E }))
 }
