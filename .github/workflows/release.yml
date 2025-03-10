@@ -8,6 +8,9 @@ on:
     branches:
       - main
 
+env:
+  LEFTHOOK: 0
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 
