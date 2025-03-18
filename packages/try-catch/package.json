@@ -36,7 +36,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/yopem/utils",
-    "directory": "packages/utils/try-catch"
+    "directory": "packages/try-catch"
   },
   "bugs": {
     "url": "https://github.com/yopem/utils/issues"
