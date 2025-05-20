@@ -52,13 +52,13 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@yopem/eslint-config": "catalog:tooling",
-    "@yopem/prettier-config": "catalog:tooling",
-    "@yopem/typescript-config": "catalog:tooling",
-    "eslint": "catalog:tooling",
-    "prettier": "catalog:tooling",
-    "tsup": "catalog:tooling",
-    "typescript": "catalog:tooling"
+    "@yopem/eslint-config": "catalog:config",
+    "@yopem/prettier-config": "catalog:config",
+    "@yopem/typescript-config": "catalog:config",
+    "eslint": "catalog:config",
+    "prettier": "catalog:config",
+    "tsup": "catalog:config",
+    "typescript": "catalog:config"
   },
   "tsup": {
     "clean": true,
