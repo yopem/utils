@@ -8,21 +8,38 @@
   },
   "author": "Karyana Yandi <karyana@yandi.me>",
   "license": "MIT",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "catalogs": {
+      "config": {
+        "@yopem/eslint-config": "^0.2.0",
+        "@yopem/prettier-config": "^0.1.1",
+        "@yopem/typescript-config": "^0.2.0",
+        "eslint": "^9.21.0",
+        "prettier": "^3.5.3",
+        "tailwindcss": "^4.0.2",
+        "tsup": "^8.3.6",
+        "typescript": "^5.7.3"
+      }
+    }
+  },
   "scripts": {
     "build": "turbo run build",
     "build:all": "turbo run build",
     "build:fast": "turbo run build:fast",
-    "clean": "pnpm -r --parallel exec git clean -xdf dist .cache .turbo .next *.log",
-    "clean:all": "pnpm clean && pnpm clean:deps",
-    "clean:deps": "pnpm -r --parallel exec git clean -xdf node_modules",
+    "clean": "git clean -xdf dist .cache .turbo .next *.log",
+    "clean:all": "bun run clean && bun run clean:deps",
+    "clean:deps": "git clean -xdf node_modules",
     "dev": "turbo dev",
     "format:check": "turbo format:check",
     "format:write": "turbo format:write",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
     "postinstall": "lefthook install",
-    "prebuild": "pnpm install",
-    "predev": "pnpm build",
+    "prebuild": "bun install",
+    "predev": "bun run build",
     "release": "changeset publish",
     "release:dev": "changeset publish --tag dev",
     "typecheck": "turbo typecheck",
@@ -44,15 +61,6 @@
   "engines": {
     "node": ">=20"
   },
-  "packageManager": "pnpm@10.13.1",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "lefthook"
-    ],
-    "ignoredBuiltDependencies": [
-      "lefthook"
-    ]
-  },
+  "packageManager": "bun@1.2.18",
   "prettier": "@yopem/prettier-config/base"
 }
