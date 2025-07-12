@@ -25,6 +25,9 @@ jobs:
       - name: Install
         uses: ./.github/composite-actions/install
 
+      - name: Build
+        uses: bun run build
+
       - name: Create release Pull Request or publish to NPM
         id: changesets
         uses: changesets/action@v1
