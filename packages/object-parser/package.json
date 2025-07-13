@@ -1,0 +1,71 @@
+{
+  "name": "@yopem/object-parser",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [
+    "object-parser",
+    "utils"
+  ],
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/base.js",
+  "types": "dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Karyana Yandi <karyana@yandi.me>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yopem/utils",
+    "directory": "packages/object-parser"
+  },
+  "bugs": {
+    "url": "https://github.com/yopem/utils/issues"
+  },
+  "scripts": {
+    "build": "tsup src --dts",
+    "build:fast": "tsup src",
+    "dev": "bun run build:fast -- --watch",
+    "format:write": "prettier --write \"**/*.{ts,tsx,mts,js,jsx,mjs,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,mts,js,jsx,mjs,json,md}\"",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@yopem/eslint-config": "catalog:config",
+    "@yopem/prettier-config": "catalog:config",
+    "@yopem/typescript-config": "catalog:config",
+    "eslint": "catalog:config",
+    "prettier": "catalog:config",
+    "tsup": "catalog:config",
+    "typescript": "catalog:config"
+  },
+  "tsup": {
+    "clean": true,
+    "target": "es2022",
+    "format": [
+      "cjs",
+      "esm"
+    ]
+  }
+}
