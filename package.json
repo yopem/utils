@@ -55,7 +55,7 @@
     "@yopem/prettier-config": "catalog:config",
     "lefthook": "2.0.11",
     "prettier": "catalog:config",
-    "turbo": "2.5.5",
+    "turbo": "2.6.3",
     "typescript": "catalog:config"
   },
   "engines": {
